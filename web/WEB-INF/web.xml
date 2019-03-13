@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <display-name>Friends Finder Application</display-name>
+    <servlet>
+        <servlet-name>FBMainMenu</servlet-name>
+        <servlet-class>com.friendsfinder.facebook.MainMenu</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>FBMainMenu</servlet-name>
+        <url-pattern>/fbhome</url-pattern>
+    </servlet-mapping>
+
+    <display-name>Friends Finder Application</display-name>
+    <servlet>
+        <servlet-name>VKMainMenu</servlet-name>
+        <servlet-class>com.friendsfinder.vkontakte.servlets.MainMenu</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>VKMainMenu</servlet-name>
+        <url-pattern>/vkhome</url-pattern>
+    </servlet-mapping>
+
+    <display-name>Friends Finder Application</display-name>
+    <servlet>
+        <servlet-name>Parameters</servlet-name>
+        <servlet-class>com.friendsfinder.vkontakte.servlets.Parameters</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Parameters</servlet-name>
+        <url-pattern>/settings</url-pattern>
+    </servlet-mapping>
+
+    <display-name>Friends Finder Application</display-name>
+    <servlet>
+        <servlet-name>VKSearch</servlet-name>
+        <servlet-class>com.friendsfinder.vkontakte.servlets.Finder</servlet-class>
+    </servlet>
+
+<servlet-mapping>
+    <servlet-name>VKSearch</servlet-name>
+    <url-pattern>/find</url-pattern>
+</servlet-mapping>
+
+    <display-name>Friends Finder Application</display-name>
+    <servlet>
+        <servlet-name>Sections</servlet-name>
+        <servlet-class>com.friendsfinder.vkontakte.servlets.Sections</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Sections</servlet-name>
+        <url-pattern>/sections</url-pattern>
+    </servlet-mapping>
+
+    <display-name>Friends Finder Application</display-name>
+    <servlet>
+        <servlet-name>Profile</servlet-name>
+        <servlet-class>com.friendsfinder.vkontakte.servlets.Finder</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Profile</servlet-name>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+
+    <display-name>Friends Finder Application</display-name>
+    <servlet>
+        <servlet-name>Params</servlet-name>
+        <jsp-file>/parameters.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Params</servlet-name>
+        <url-pattern>/params</url-pattern>
+    </servlet-mapping>
+
+    <display-name>Friends Finder Application</display-name>
+    <servlet>
+        <servlet-name>Welcomepage</servlet-name>
+        <jsp-file>/welcomepage.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Welcomepage</servlet-name>
+        <url-pattern>/welcomepage</url-pattern>
+    </servlet-mapping>
+
+    <display-name>Friends Finder Application</display-name>
+    <servlet>
+        <servlet-name>Findpage</servlet-name>
+        <jsp-file>/find.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Findpage</servlet-name>
+        <url-pattern>/findpage</url-pattern>
+    </servlet-mapping>
+
+    <display-name>Friends Finder Application</display-name>
+    <servlet>
+        <servlet-name>Profilepage</servlet-name>
+        <jsp-file>/profile.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Profilepage</servlet-name>
+        <url-pattern>/profilepage</url-pattern>
+    </servlet-mapping>
+
+    <display-name>Friends Finder Application</display-name>
+    <servlet>
+        <servlet-name>Enter</servlet-name>
+        <jsp-file>/enter.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Enter</servlet-name>
+        <url-pattern>/enter</url-pattern>
+    </servlet-mapping>
+
+
+</web-app>
