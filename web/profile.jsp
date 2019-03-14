@@ -50,7 +50,7 @@
      String about ="";
      Set<String> keys = profile.getProfileInfo().keySet();
      for(String key: keys){
-         if(key == "about"){ about = profile.getProfileInfo().get("about"); break;}
+         if(key.equals("about")){ about = profile.getProfileInfo().get("about"); break;}
      }
 
      String sections="";
@@ -77,7 +77,6 @@
         width: 100%; /* Ширина блока */
         height: 50pt; /* Высота блока */
         padding: 5px; /* Поля вокруг текста */
-        /*border: solid 1px black; !* Параметры рамки *!*/
     }
 </style>
 
@@ -87,9 +86,6 @@
             <div class="col-xs-6">
                 <a href="/"><img src="img/logo3.png" alt="Logo"></a>
             </div>
-            <%--<div class="col-xs-6 signin text-right navbar-nav">--%>
-            <%--<a href="#pricing" class="scroll">Pricing</a>&nbsp; &nbsp;<a href="#">Sign in</a>--%>
-            <%--</div>--%>
         </div>
 
     </div>
@@ -116,25 +112,7 @@
                     <div class="col-xs-12 col-sm-4 text-center">
                         <figure>
                             <img style="width: 100pt; height: 100pt" src=<%=profile.getProfileInfo().get("photo")%> alt="user" class="img-circle img-responsive">
-                            <%--<figcaption class="ratings">--%>
-                                <%--<p>Рейтинг--%>
-                                    <%--<a href="#">--%>
-                                        <%--<span class="fa fa-star"></span>--%>
-                                    <%--</a>--%>
-                                    <%--<a href="#">--%>
-                                        <%--<span class="fa fa-star"></span>--%>
-                                    <%--</a>--%>
-                                    <%--<a href="#">--%>
-                                        <%--<span class="fa fa-star"></span>--%>
-                                    <%--</a>--%>
-                                    <%--<a href="#">--%>
-                                        <%--<span class="fa fa-star"></span>--%>
-                                    <%--</a>--%>
-                                    <%--<a href="#">--%>
-                                        <%--<span class="fa fa-star-o"></span>--%>
-                                    <%--</a>--%>
-                                <%--</p>--%>
-                            <%--</figcaption>--%>
+
                         </figure>
                     </div>
                 </div>
@@ -142,35 +120,14 @@
                     <div class="col-xs-12 col-sm-4 emphasis">
                         <h2 style="color: #74716e"><strong> <%=fcount%> </strong></h2>
                         <p><small>Друзей</small></p>
-                        <%--<button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Подписатся</button>--%>
                     </div>
                     <div class="col-xs-12 col-sm-4 emphasis">
                         <h2 style="color: #74716e"><strong><%=pcount%></strong></h2>
                         <p><small>Записей</small></p>
                         <form method="post" action=<%=hr%>>
                         <button type="submit" onclick="<%=hr%>" class="btn btn-primary btn-lg"><span class="fa fa-user" ></span>Перейти в профиль</button>
-                        <%--<button class="btn btn-info btn-block"><span class="fa fa-user" onclick=hr></span> Перейти в профиль</button>--%>
                         </form>
                     </div>
-                    <%--<div class="col-xs-12 col-sm-4 emphasis">--%>
-                        <%--<h2><strong>74</strong></h2>--%>
-                        <%--<p><small>Работы</small></p>--%>
-                        <%--<div class="btn-group dropup btn-block">--%>
-                            <%--<button type="button" class="btn btn-primary"><span class="fa fa-gear"></span> Опции</button>--%>
-                            <%--<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">--%>
-                                <%--<span class="caret"></span>--%>
-                                <%--<span class="sr-only">Toggle Dropdown</span>--%>
-                            <%--</button>--%>
-                            <%--<ul class="dropdown-menu text-left" role="menu">--%>
-                                <%--<li><a href="#"><span class="fa fa-envelope pull-right"></span> Отправить email </a></li>--%>
-                                <%--<li><a href="#"><span class="fa fa-list pull-right"></span> Редактировать список</a></li>--%>
-                                <%--<li class="divider"></li>--%>
-                                <%--<li><a href="#"><span class="fa fa-warning pull-right"></span>Сообщить о спаме</a></li>--%>
-                                <%--<li class="divider"></li>--%>
-                                <%--<li><a href="#" class="btn disabled" role="button"> Отписатся </a></li>--%>
-                            <%--</ul>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
                 </div>
             </div>
         </div>

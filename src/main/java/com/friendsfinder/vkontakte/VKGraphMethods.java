@@ -3,6 +3,7 @@ package com.friendsfinder.vkontakte;
 import com.friendsfinder.api.Page;
 import com.friendsfinder.vkontakte.servlets.Parameters;
 import com.friendsfinder.vkontakte.servlets.MainMenu;
+import javafx.geometry.Pos;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -118,10 +119,11 @@ public class VKGraphMethods {
      * Метод для заполнения поля-отображения vkProfile со стены текущего пользователя
      *  wall
      */
-    public static ArrayList<String> getMapfromWall(String ID) {
+    public static ArrayList<PostWall> getMapfromWall(String ID) {
 
         boolean flag = true;
-        ArrayList<String> posts = new ArrayList<>();
+
+        ArrayList<PostWall> posts = new ArrayList<>();
         while (flag) {
             String wall = Page.GetContent(VKGraphMethods.getVkGraphWall(ID));
             //log.info("wall = " + wall);
@@ -137,20 +139,66 @@ public class VKGraphMethods {
                         continue;
                     } else return null;
                 }
-
                 json = (JSONObject) json.get("response");
                 JSONArray array = (JSONArray) json.get("items");
                 for (int j = 0; j < array.length(); ++j) {
-                    JSONObject post = (JSONObject) array.get(j);
-                    posts.add(post.getString("text"));
-                    if (post.has("copy_history")) {
-                        JSONArray array_ = (JSONArray) post.get("copy_history");
+//                    PostWall post = new PostWall(array.getJSONObject(j).getString("id"));
+                    JSONObject jpost = (JSONObject) array.get(j);
+                    PostWall post = new PostWall(jpost.get("id").toString());
+                    if(jpost.has("text")){
+                        post.addText(jpost.getString("text"));
+//                    posts.add(jpost.getString("text"));
+                    }
+                    if (jpost.has("copy_history")) {
+                        JSONArray array_ = (JSONArray) jpost.get("copy_history");
                         for (int i = 0; i < array_.length(); ++i) {
                             JSONObject repost = (JSONObject) array_.get(i);
-                            posts.add(repost.getString("text"));
+                            post.addText(repost.getString("text"));
+                            if(repost.has("attachments")){
+                                JSONArray attachments = repost.getJSONArray("attachments");
+                                for(int a = 0 ; a < attachments.length(); ++a){
+                                    JSONObject atobject = attachments.getJSONObject(a);
+                                    if (atobject.get("type").toString().equals("photo")){
+                                       JSONArray sizes = (atobject.getJSONObject("photo")).getJSONArray("sizes");
+                                       for(int s =0 ; s < sizes.length(); ++s){
+                                           JSONObject sphoto = sizes.getJSONObject(s);
+                                           if(sphoto.get("type").equals("r")){
+                                               post.addPhoto(sphoto.getString("url"));
+                                               break;
+                                           }
+                                       }
+                                    }
+                                    if(atobject.get("type").toString().equals("audio")){
+                                        JSONObject aud = atobject.getJSONObject("audio");
+                                        post.addAudio(aud.getString("artist") + " " + aud.getString("title"));
+                                    }
+                                }
+                            }
                         }
                     }
+                    if(jpost.has("attachments")){
+                        JSONArray attachments = jpost.getJSONArray("attachments");
+                        for(int a = 0 ; a < attachments.length(); ++a){
+                            JSONObject atobject = attachments.getJSONObject(a);
+                            if (atobject.get("type").toString().equals("photo")){
+                                JSONArray sizes = (atobject.getJSONObject("photo")).getJSONArray("sizes");
+                                for(int s =0 ; s < sizes.length(); ++s){
+                                    JSONObject sphoto = sizes.getJSONObject(s);
+                                    if(sphoto.get("type").equals("r")){
+                                        post.addPhoto(sphoto.getString("url"));
+                                        break;
+                                    }
+                                }
+                            }
+                            if(atobject.get("type").toString().equals("audio")){
+                                JSONObject aud = atobject.getJSONObject("audio");
+                                post.addAudio(aud.getString("artist") + " " + aud.getString("title"));
+                            }
+                        }
+                    }
+                    posts.add(post);
                 }
+//                posts.add()
                 flag = false;
             } catch (JSONException e) {
                 log.log(Level.SEVERE, "ERROR in parsing VK Graph data map wall: ", e);

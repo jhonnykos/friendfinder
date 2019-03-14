@@ -1,9 +1,14 @@
 package com.friendsfinder.finder;
 
+import com.friendsfinder.api.ImageRecognition;
+import com.friendsfinder.api.WordTranslation;
+import com.friendsfinder.vkontakte.PostWall;
 import com.friendsfinder.vkontakte.VKGraphMethods;
 import com.friendsfinder.vkontakte.servlets.MainMenu;
 import com.friendsfinder.vkontakte.VKProfile;
+import org.json.JSONException;
 
+import java.io.IOException;
 import java.util.regex.Pattern;
 
 import java.util.*;
@@ -54,23 +59,47 @@ public class Search {
 
         if (sections.contains("wall")) {
             //  System.out.println("Зашли в стену");
-            ArrayList<String> wall = profile.getWall();
+            ArrayList<PostWall> wall = profile.getWall();
             if (wall != null) {
                 System.out.println("Стена есть");
                 for (int i = 0; i < wall.size(); ++i) {
-                    if (checktext(wall.get(i))) {
+                    if (checktext(wall.get(i).getText())) {
                         profile.addSection("wall");
                         flag = true;
-                        System.out.println("Найдено на стене");
-                        // break;
+                        System.out.println("Найдено на стене текстом");
+                    }
+
+                    ArrayList<String> photourls = wall.get(i).getPhotosurl();
+                    ArrayList<String> wordsbyphotos = new ArrayList<>();
+                    try {
+                        ArrayList<String> tags = ImageRecognition.getTagsbyAll(photourls);
+                        if (tags != null) {
+                            wordsbyphotos = WordTranslation.getTranslate(tags);
+
+                            if (checktext(wordsbyphotos.toString())) {
+                                System.out.println("WORDS TO STRING!: " + wordsbyphotos.toString());
+                                profile.addSection("wall");
+                                flag = true;
+                                System.out.println("Найдено на стене фото");
+                            }
+                        }
+
+                        ArrayList<String> audios = wall.get(i).getAudio();
+                        if (checktext(audios.toString())) {
+                            System.out.println("AUDIOS TO STRING!: " + wordsbyphotos.toString());
+                            profile.addSection("wall");
+                            flag = true;
+                            System.out.println("Найдено на стене аудио");
+                        }
+                    } catch (JSONException e) {
+                        log.log(Level.SEVERE, "Error in imagerecognition IO", e);
                     }
                 }
-            }
-            else System.out.println("Стены нет((");
+            } else System.out.println("Стены нет((");
         }
 
         if (flag && (!ids.contains(info.get("id")))) {
-            System.out.println("FRIEND " + profile.getProfileInfo().get("first_name") +" " + profile.getProfileInfo().get("last_name"));
+            System.out.println("FRIEND " + profile.getProfileInfo().get("first_name") + " " + profile.getProfileInfo().get("last_name"));
             this.friends.add(profile);
             ids.add(info.get("id"));
         }

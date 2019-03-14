@@ -55,7 +55,7 @@ public class VKProfile {
         return friends;
     }
 
-    public ArrayList<String> getWall() {
+    public ArrayList<PostWall> getWall() {
         return this.wall;
     }
 
@@ -106,7 +106,7 @@ public class VKProfile {
     private Map<String,String> info;
     private ArrayList<String> friendsids;
     private ArrayList<VKProfile> friends;
-    private ArrayList<String> wall;
+    private ArrayList<PostWall> wall;
     private VKProfile parent;
     private int depth;
     private String sections;

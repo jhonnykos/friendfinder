@@ -49,9 +49,6 @@
             <div class="col-xs-6">
                 <a href="/"><img src="img/logo3.png" alt="Logo"></a>
             </div>
-            <%--<div class="col-xs-6 signin text-right navbar-nav">--%>
-                <%--<a href="#pricing" class="scroll">Pricing</a>&nbsp; &nbsp;<a href="#">Sign in</a>--%>
-            <%--</div>--%>
         </div>
 
         <div class="row header-info">

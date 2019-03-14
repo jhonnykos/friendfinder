@@ -8,13 +8,6 @@
 <%@ page contentType="text/html;charset=windows-1251" language="java"
          pageEncoding="utf-8" %>
 
-<%--windows-1251<!DOCTYPE HTML>--%>
-<%--<html>--%>
-<%--<head>--%>
-    <%--<meta charset="windows-1251">--%>
-    <%--<title>FFinder</title>--%>
-<%--</head>--%>
-<%--<body>--%>
 <!DOCTYPE html>
 <html lang="en"><head>
     <meta charset="utf-8">
@@ -66,30 +59,24 @@
             <br />
             <p class="lead wow fadeIn" data-wow-delay="0.5s" style="color: #79838f">Введите список интересующих тем:</p>
             <br />
-    <%--&lt;%&ndash;<p><Br>Здравствуй, <%=session.getAttribute("name")%>!&ndash;%&gt;--%>
-        <%--<Br>Что ищем?</Br>--%>
             <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <form role="form">
                     <div class="form-group">
                         <input type="text" name = "keyword" class="form-control" placeholder="ключевые темы" required>
                     </div>
-                    <%--<button type="submit" class="btn btn-primary btn-lg">Request Invite</button>--%>
                 </form>
                 <p class="lead wow fadeIn" data-wow-delay="0.5s" style="color: #79838f">Выберите, где искать:</p>
                 <br />
 
             <div class="col-sm-2 col-sm-offset-2 col-md-4 col-md-offset-3" style="font-size: 17pt; text-align: left;">
-                <%--<form role="form" style="text-align: left">--%>
                     <div class="form-group" data-wow-delay="0.5s"  style="color: #79838f" aria-required="true">
                         <input type="checkbox" name = "interests" style="font-size: 16pt"> Интересы <Br>
                         <input type="checkbox" name = "about" style="font-size: 16pt"> О себе <Br>
                         <input type="checkbox" name = "careers" style="font-size: 16pt"> Профессия<Br>
                         <input type="checkbox" name = "wall" style="font-size: 16pt"> Стена <Br>
-
                     </div>
-                    <button type="submit" onclick="/find" class="btn btn-primary btn-lg">Найти</button>
-                <%--</form>--%>
             </div>
+                <button type="submit" onclick="/find" class="btn btn-primary btn-lg">Найти</button>
             </div>
         </div>
     </div>
