@@ -58,7 +58,7 @@
                             <div class="row">
                                 <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                                         <div class="form-group" >
-                                            <input style="color: #5b5957"  type="number" min="1" max="5" name = "depth" value="3" class="form-control" placeholder="введите число" required>
+                                            <input style="color: #5b5957" type="number" min="1" max="5" name = "depth" value="3" class="form-control" placeholder="введите число" required>
                                         </div>
                                 </div>
                             </div>
