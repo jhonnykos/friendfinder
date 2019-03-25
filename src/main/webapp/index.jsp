@@ -7,11 +7,13 @@
 --%>
 <%@page import="com.friendsfinder.facebook.FBConnection" %>
 <%@ page import="com.friendsfinder.vkontakte.VKConnection" %>
+<%@ page import="com.friendsfinder.finder.Morfology" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"
          pageEncoding="UTF-8" %>
 <%
     FBConnection fbConnection = new FBConnection();
     VKConnection vkConnection = new VKConnection();
+    if(Morfology.SDK == null) Morfology.loadlibrary();
 %>
 
 <!DOCTYPE html>

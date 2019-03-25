@@ -1,5 +1,6 @@
 package com.friendsfinder.vkontakte.servlets;
 
+import com.friendsfinder.finder.Morfology;
 import com.friendsfinder.vkontakte.VKConnection;
 //import com.friendsfinder.vkontakte.VKGraph;
 import com.friendsfinder.vkontakte.VKGraphMethods;
@@ -28,8 +29,8 @@ public class MainMenu extends HttpServlet {
 
     public void service(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        HttpSession session = req.getSession();
 
+        HttpSession session = req.getSession();
         code = req.getParameter("code");
 
         //TODO добавить сообщение

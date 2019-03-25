@@ -6,6 +6,7 @@ import com.friendsfinder.vkontakte.PostWall;
 import com.friendsfinder.vkontakte.VKGraphMethods;
 import com.friendsfinder.vkontakte.servlets.MainMenu;
 import com.friendsfinder.vkontakte.VKProfile;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import org.json.JSONException;
 
 import java.io.IOException;
@@ -75,12 +76,14 @@ public class Search {
                         ArrayList<String> tags = ImageRecognition.getTagsbyAll(photourls);
                         if (tags != null) {
                             wordsbyphotos = WordTranslation.getTranslate(tags);
-
-                            if (checktext(wordsbyphotos.toString())) {
-                                System.out.println("WORDS TO STRING!: " + wordsbyphotos.toString());
-                                profile.addSection("wall");
-                                flag = true;
-                                System.out.println("Найдено на стене фото");
+                            if(wordsbyphotos != null) {
+                                System.out.println(wordsbyphotos.toString());
+                                if (checktext(wordsbyphotos.toString())) {
+                                    System.out.println("WORDS TO STRING!: " + wordsbyphotos.toString());
+                                    profile.addSection("wall");
+                                    flag = true;
+                                    System.out.println("Найдено на стене фото");
+                                }
                             }
                         }
 
@@ -91,8 +94,9 @@ public class Search {
                             flag = true;
                             System.out.println("Найдено на стене аудио");
                         }
-                    } catch (JSONException e) {
-                        log.log(Level.SEVERE, "Error in imagerecognition IO", e);
+                    }
+                    catch (JSONException e) {
+                        log.log(Level.SEVERE, "Error in imagerecognition JSON in search "+ e.getMessage());
                     }
                 }
             } else System.out.println("Стены нет((");

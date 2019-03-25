@@ -11,9 +11,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class FBConnection {
+    //    public static String myUrl="http://localhost:8080/";
+    public static String myUrl="https://friendsfindersocial.herokuapp.com/";
     public static final String FB_APP_ID = "404496400014228";
     public static final String FB_APP_SECRET = "0459c8be0dfb451c4fdd9e87d3d09690";
-    public static final String REDIRECT_URI = "http://localhost:8080/fbhome";
+    public static final String REDIRECT_URI = FBConnection.myUrl+"fbhome";
 
 
     public FBConnection() {

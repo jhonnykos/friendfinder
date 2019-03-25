@@ -11,10 +11,13 @@ import java.util.logging.Logger;
 
 public class VKConnection {
 
+//    public static String myUrl="https://friendsfindersocial.herokuapp.com/";
+    public static String myUrl="http://localhost:8080/";
     public static final String VK_APP_ID = "6409550";
     public static final String VK_APP_SECRET = "66hzFV9JTXBhBcWhgFEN";
-    public static final String REDIRECT_URI = "http://localhost:8080/vkhome";
+    public static final String REDIRECT_URI = VKConnection.myUrl + "vkhome";
     public static String access_token = "";
+
 
     public VKConnection() {
         userID = ""; access_token = "";
@@ -29,7 +32,7 @@ public class VKConnection {
         try {
             vkLoginUrl = "https://oauth.vk.com/authorize?" + "client_id="
                     + VKConnection.VK_APP_ID + "&redirect_uri="
-                    + URLEncoder.encode(VKConnection.REDIRECT_URI, "UTF-8")
+                    + URLEncoder.encode(VKConnection.REDIRECT_URI, "utf-8")
                     + "&response_type=code"
                     + "&scope=email,public_profile,user_friends"
                     + "&v=5.73";

@@ -27,11 +27,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Morfology {
-    public Morfology()
-    {
+
+    public static void loadlibrary(){
+        SDK = JMorfSdkLoad.loadFullLibrary();
     }
 
-    public static JMorfSdk SDK = JMorfSdkLoad.loadFullLibrary();;
+    public static JMorfSdk SDK;
 
     public static ArrayList<String> getForms(String word) throws Exception {
         ArrayList<String> array = new ArrayList<String>();
